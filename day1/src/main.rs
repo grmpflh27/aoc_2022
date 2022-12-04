@@ -1,14 +1,23 @@
 use std::env;
 use std::fs;
 
-const DAY: &str = "day3";
+const DAY: &str = "day1";
 
 fn main() {
-    let file_path = format!("/{}/src/{}_test.txt", DAY, DAY);
+    println!("TEST");
+    let test_file_path = format!("/{}/src/{}_test.txt", DAY, DAY);
+    let yummy_food = read_lines(&test_file_path);
+    let mut calories: Vec<u32> = parseCals(&yummy_food);
+    part1(&calories);
+    part2(calories);
+
+    println!("FOR REAL");
     let file_path = format!("/{}/src/{}.txt", DAY, DAY);
-    let strategy_guide = read_lines(&file_path);
-    part1(&strategy_guide);
-    part2(&strategy_guide);
+    let yummy_food = read_lines(&file_path);
+
+    let mut calories: Vec<u32> = parseCals(&yummy_food);
+    part1(&calories);
+    part2(calories);
 }
 
 fn read_lines(filename: &str) -> String {
